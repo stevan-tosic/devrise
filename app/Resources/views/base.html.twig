@@ -4,13 +4,30 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Dobrodosli!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/nivo-lightbox.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/nivo_themes/default/default.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <!-- google web font css -->
+            <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+        {% endblock %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".navbar-collapse">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/nivo-lightbox.min.js') }}"></script>
+            <script src="{{ asset('js/smoothscroll.js') }}"></script>
+            <script src="{{ asset('js/jquery.nav.js') }}"></script>
+            <script src="{{ asset('js/isotope.js') }}"></script>
+            <script src="{{ asset('js/imagesloaded.min.js') }}"></script>
+            <script src="{{ asset('js/custom.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
