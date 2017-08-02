@@ -15,18 +15,21 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $ip = $request->getClientIp();
-        if($ip == 'unknown'){
-            $ip = $_SERVER['REMOTE_ADDR'];
+        if ($ip != '127.0.0.1') {
+            if($ip == 'unknown'){
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $visitors = new Visitors();
+
+            $visitors->setIp($ip);
+            $visitors->setDate(new \DateTime('now'));
+
+            $em->persist($visitors);
+            $em->flush();
+
         }
-
-        $em = $this->getDoctrine()->getManager();
-        $visitors = new Visitors();
-
-        $visitors->setIp($ip);
-        $visitors->setDate(new \DateTime('now'));
-
-        $em->persist($visitors);
-        $em->flush();
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
